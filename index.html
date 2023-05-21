@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Obrazac</title>
+  <style>
+    body {
+      background-image: url("pozadina.avif");
+    }
+    
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .form-group {
+      margin-bottom: 15px;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    
+    input[type="text"],
+    select {
+      width: 200px;
+      padding: 5px;
+    }
+    
+    input[type="radio"],
+    input[type="checkbox"] {
+      margin-right: 5px;
+    }
+    
+    .slider {
+      width: 200px;
+    }
+    
+    .slider-value {
+      display: inline-block;
+      margin-left: 5px;
+      font-weight: bold;
+    }
+    
+    .submit-btn {
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <form>
+      <div class="form-group">
+        <label for="ime-prezime">Ime i prezime:</label>
+        <input type="text" id="ime-prezime" name="ime-prezime" required>
+      </div>
+      
+      <div class="form-group">
+        <label>Spol:</label>
+        <input type="radio" id="spol-muski" name="spol" value="muski" required>
+        <label for="spol-muski">Muški</label>
+        
+        <input type="radio" id="spol-zenski" name="spol" value="zenski">
+        <label for="spol-zenski">Ženski</label>
+      </div>
+      
+      <div class="form-group">
+        <label for="datum-rodenja">Visina obrazovanja:</label>
+        <select id="datum-rodenja" name="datum-rodenja" required>
+          <option value="" disabled selected>Visina obrazovanja</option>
+          <option value="1">Osnovna škola</option>
+          <option value="2">Srednja škola</option>
+          <option value="3">Fakultet</option>
+          <!-- Dodajte ostale opcije za datume -->
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="ocjena">Ocjena:</label>
+        <input type="range" id="ocjena" name="ocjena" min="1" max="10" step="1" class="slider" required>
+        <span class="slider-value">5</span>
+      </div>
+      
+      <input type="submit" value="Pošalji" class="submit-btn">
+    </form>
+  </div>
+  
+  <script>
+    var slider = document.getElementById("ocjena");
+    var sliderValue = document.querySelector(".slider-value");
+    sliderValue.innerHTML = slider.value;
+    
+    slider.oninput = function() {
+      sliderValue.innerHTML = this.value;
+    }
+  </script>
+</body>
+</html>
